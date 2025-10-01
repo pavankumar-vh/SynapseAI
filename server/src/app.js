@@ -15,10 +15,19 @@ const corsOptions = {
     // Allow requests with no origin (mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
     
-    // Allow all localhost and 127.0.0.1 origins
+    // Allowed origins
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://127.0.0.1:5173',
+      process.env.CORS_ORIGIN, // For custom domains
+    ];
+    
+    // Allow all localhost/127.0.0.1 origins or vercel.app domains
     if (origin.startsWith('http://localhost:') || 
         origin.startsWith('http://127.0.0.1:') ||
-        origin === process.env.CORS_ORIGIN) {
+        origin.endsWith('.vercel.app') ||
+        allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
     
