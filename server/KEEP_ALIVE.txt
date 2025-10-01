@@ -1,0 +1,49 @@
+# Render Keep-Alive Service
+
+This service keeps your Render backend awake by sending periodic health check pings.
+
+## Why?
+
+Render's free tier goes to sleep after 15 minutes of inactivity. This service prevents that by pinging your server every 14 minutes.
+
+## Built-in Keep-Alive
+
+The server now has **automatic keep-alive** in production mode. When deployed to Render, it will ping itself every 14 minutes automatically.
+
+## External Keep-Alive (Optional)
+
+If you want an external service for extra reliability:
+
+### Option 1: Run Locally
+```bash
+cd server
+node keep-alive.js
+```
+
+### Option 2: Deploy on Render
+1. Create a new **Background Worker** on Render
+2. Connect your GitHub repo
+3. Set root directory: `server`
+4. Set command: `node keep-alive.js`
+5. Add environment variable:
+   - `RENDER_URL=https://synapseai-7dxo.onrender.com`
+
+### Option 3: Use Cron-Job.org (Free)
+1. Go to https://cron-job.org/
+2. Create free account
+3. Create new cron job:
+   - URL: `https://synapseai-7dxo.onrender.com/api/health`
+   - Interval: Every 14 minutes
+   - Request method: GET
+
+### Option 4: Use UptimeRobot (Free)
+1. Go to https://uptimerobot.com/
+2. Create free account
+3. Add new monitor:
+   - Type: HTTP(s)
+   - URL: `https://synapseai-7dxo.onrender.com/api/health`
+   - Interval: 5 minutes (free tier)
+
+## Recommendation
+
+The **built-in keep-alive** in `server.js` should be sufficient. It runs automatically in production and requires no external setup.
