@@ -11,6 +11,10 @@
 
 **An intelligent AI-powered content generation toolkit with credit management, support tickets, and admin dashboard.**
 
+### 🌐 Live Deployment
+**Frontend:** [https://synapse-ai-eight.vercel.app](https://synapse-ai-eight.vercel.app)  
+**Backend API:** [https://synapseai-7dxo.onrender.com](https://synapseai-7dxo.onrender.com)
+
 [Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Configuration](#-configuration) • [Usage](#-usage) • [API Documentation](#-api-documentation)
 
 </div>
