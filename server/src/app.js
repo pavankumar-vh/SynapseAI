@@ -20,7 +20,9 @@ const corsOptions = {
       'http://localhost:5173',
       'http://localhost:5174',
       'http://127.0.0.1:5173',
-      process.env.CORS_ORIGIN, // For custom domains
+      'https://synapse-ai-eight.vercel.app',
+      'https://synapseai-7dxo.onrender.com',
+      process.env.CORS_ORIGIN,
     ];
     
     // Allow all localhost/127.0.0.1 origins or vercel.app domains
